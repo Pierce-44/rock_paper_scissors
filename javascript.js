@@ -1,3 +1,31 @@
+
+let playerScore = 0;
+let computerScore = 0;
+let playerSelection = " ";
+let hideBTN = playAgain.style.visibility = 'hidden';
+
+
+const buttons = document.querySelectorAll('.buttons');
+buttons.forEach((button) => {
+    button.addEventListener('click', singleround);
+    button.addEventListener('click', terminate);
+});
+
+const playAgainBTN = document.querySelector('#playAgain');
+playAgainBTN.addEventListener('click', activate);
+
+
+document.getElementById('rock').onclick = function() {
+    playerSelection = "Rock";
+};
+document.getElementById('paper').onclick = function() {
+    playerSelection = "Paper";
+};
+document.getElementById('scissors').onclick = function() {
+    playerSelection = "Scissors";
+};
+
+
 function computerPlay() {
     const options = ["Rock", "Paper", "Scissors"];
     const selection = Math.floor(Math.random() * options.length);
@@ -12,49 +40,71 @@ function computerPlay() {
     }
 
 
+function winner() {
+    if (playerScore === 5 && playerScore > computerScore) {
+        return "Congradulations you WIN! Click here to play again!";
+    };
+    if (computerScore === 5 && computerScore > playerScore) {
+        return "Unlucky the computer WINS! Click here to play again!";
+    };
+};
 
-//--------Singleround of rock paper scissors-------------
+
+function terminate() {
+    if (playerScore === 5 || computerScore === 5) {
+        document.getElementById('rock').disabled = true;
+        document.getElementById('paper').disabled = true;
+        document.getElementById('scissors').disabled = true;
+        hideBTN = playAgain.style.visibility = 'visible';
+        document.getElementById("playAgain").innerText = winner();
+    };
+};
+
+
+function activate() {
+    playerScore = 0;
+    computerScore = 0;
+    document.getElementById("playerResults").innerHTML = "Player Score" + " " + playerScore;
+    document.getElementById("computerResults").innerHTML = "Computer Score" + " " + computerScore;
+    if (playAgain.style.visibility = 'visible') {
+        document.getElementById('rock').disabled = false;
+        document.getElementById('paper').disabled = false;
+        document.getElementById('scissors').disabled = false;
+        hideBTN = playAgain.style.visibility = 'hidden';
+    };
+};
+
 
 function singleround() {
-    const playerSelection = "ROCK";
     const computerSelection = computerPlay();
-    let playerSelectionMod = playerSelection.toLowerCase();
-    let playerResult = playerSelectionMod.charAt(0).toUpperCase() + playerSelectionMod.slice(1);
-
-    if (playerResult === computerSelection) {
-        return "It is a Draw"
+    if (playerSelection === computerSelection) {
+        document.getElementById("playerResults").innerHTML = "Player Score" + " " + playerScore;
+        document.getElementById("computerResults").innerHTML = "Computer Score" + " " + computerScore;
     }
 
-    // if player uses Rock, results:
-
-    else if (playerResult === "Rock" && computerSelection === "Scissors") {
-        return "Player Wins"
+    else if (playerSelection === "Rock" && computerSelection === "Scissors" || playerSelection === "Paper" && computerSelection === "Rock" || playerSelection === "Scissors" && computerSelection === "Paper") {
+        ++playerScore;
+        document.getElementById("playerResults").innerHTML = "Player Score" + " " + playerScore;
+        document.getElementById("computerResults").innerHTML = "Computer Score" + " " + computerScore;
     }
 
-    else if (playerResult === "Rock" && computerSelection === "Paper") {
-        return "Computer Wins"
-    }
+    else if (playerSelection === "Rock" && computerSelection === "Paper" || playerSelection === "Paper" && computerSelection === "Scissors" || playerSelection === "Scissors" && computerSelection === "Rock") {
+        ++computerScore;
+        document.getElementById("playerResults").innerHTML = "Player Score" + " " + playerScore;
+        document.getElementById("computerResults").innerHTML = "Computer Score" + " " + computerScore;
+    };
+};
 
-    // if player uses Paper, results:
 
-    else if (playerResult === "Paper" && computerSelection === "Rock") {
-        return "Player Wins"
-    }
 
-    else if (playerResult === "Paper" && computerSelection === "Scissors") {
-        return "Computer Wins"
-    }
 
-    // if player uses Scissors, results:
 
-    else if (playerResult === "Scissors" && computerSelection === "Paper") {
-        return "Player Wins"
-    }
 
-    else if (playerResult === "Scissors" && computerSelection === "Rock") {
-        return "Computer Wins"
-    }
-}
+
+
+
+
+
 
 
 // 
@@ -74,7 +124,7 @@ function singleround() {
       notice winner 
 */
 
-// ---------Five rounds of Rock Paper Scissors---------
+/* ---------Five rounds of Rock Paper Scissors---------
 
 function game() {
     let playerScore = 0
@@ -142,3 +192,24 @@ function game() {
 
 
 console.log(game())
+
+
+1) Click button
+2) Return button value
+3) Imput button value into round fucntion
+4) Return the winner and and tally points
+5) Stop when the first player gets to 5 points
+6) Announce the winner
+
+
+
+
+
+
+
+
+
+
+
+
+*/
