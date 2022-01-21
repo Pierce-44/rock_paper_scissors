@@ -1,0 +1,106 @@
+@font-face {
+    font-family: customFont;
+    src: url(slkscr.ttf);
+}
+
+body {
+    margin-top: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-family: customFont;
+    font-size: 70px;
+    background-color: rgb(0, 153, 255);
+    color: white;
+    margin: 0;
+    padding: 40px;
+    font-weight: bold;
+    text-shadow: 10px 7px  grey;
+    border-style: solid;
+    border-width: 8px;
+    border-color: grey;
+    border-radius: 20px;
+    text-shadow: 10px 6px  grey;
+    box-shadow: 15px 15px black;
+}
+
+.buttoncontainer {
+    display: flex;
+    padding-top: 85px;
+    padding-bottom: 50px;
+    justify-content: center;
+    gap: 75px;
+}
+
+img {
+    cursor: pointer;
+}
+
+.scores {
+    display: flex;
+    font-family: customFont;
+    font-size: 35px;
+    gap: 130px;
+    justify-content: center;
+
+}
+
+#playerResults {
+    padding: 10px;
+    border-style: solid;
+    border-width: thick;
+    background-color: rgb(0, 153, 255);
+    color: white;
+    border-color: grey;
+    border-radius: 10px;
+    text-shadow: 5px 3px  grey;
+    box-shadow: 8px 8px black;
+}
+
+#computerResults {
+    padding: 10px;
+    border-style: solid;
+    border-width: thick;
+    background-color: rgb(0, 153, 255);
+    color: white;
+    border-color: grey;
+    border-radius: 10px;
+    text-shadow: 5px 3px  grey;
+    box-shadow: 8px 8px black;
+}
+
+.playagaincontainer {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+#playAgain {
+    background-color: rgb(0, 153, 255);
+    font-family: customFont;
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
+    padding: 20px;
+    border-style: solid;
+    border-width: thick;
+    border-color: grey;
+    border-radius: 10px;
+    text-shadow: 6px 4px  grey;
+    box-shadow: 10px 10px black;
+    transition: all 0.7s ease;
+}
+
+#scissorsqs {
+
+}
+
+.playing {
+    transform: scale(1.2);
+
+}
